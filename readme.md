@@ -307,4 +307,3 @@ So it looks like the below
 
 5) Replace the publisher with what you copied from above in your stats page.
 
-
