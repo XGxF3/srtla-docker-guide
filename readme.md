@@ -10,7 +10,8 @@
 <p>20240505</p>
 	<li>added --restart=always to docker command</li>
 	<li>added --pull=always to docker command</li>
-	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”</li>
+	<li>change container name from belabox-receiver to srtla-receiver</li>
+	<li>“or similar wording” added to “Looking at the log from view details…”</li>
 	
 <p></p>
 <hr />
