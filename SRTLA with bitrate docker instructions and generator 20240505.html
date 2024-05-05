@@ -1,0 +1,160 @@
+<html>
+<body>
+        
+    <div>
+        Your Public IP address : <br>
+        <input type="text" id="text1"><br><br>
+
+        Your docker computers IP address : <br>
+        <input type="text" id="text7" ><br><br>
+
+        Your config.json path : <br>
+        <input type="text" id="text2" style="width: 600px;">
+	<br><br>
+
+
+	Map port 5000 (video ingest) to: <br>
+        <input type="text" id="text3" value ="5077" autocomplete="off"><br><br>
+
+        Map port  8181 (Private Statistics) to: <br>
+        <input type="text" id="text4" value="8177" autocomplete="off"><br><br>
+
+	Map port  8282 (video out) to: <br>
+        <input type="text" id="text5" value ="8277" autocomplete="off"><br><br>
+
+        Map port  3000 (Public Statistics) to: <br>
+        <input type="text" id="text6" value ="3077" autocomplete="off"><br><br>
+
+        Stream user : <br>
+        <input type="text" id="text8" value ="belabox" autocomplete="off"><br><br>
+
+        Stream key : <br>
+        <input type="text" id="text9" value ="belabox" autocomplete="off"><br><br>
+
+
+	<input type="button" value="Generate" onclick="isPrivateIP()">
+	<br><br>
+	<br><br>
+
+       	your ip is public or private: <br>
+        <input type="text" id="res" style="width: 350px;" readonly>
+        <br><br>
+
+	copy and paste this docker command into a terminal window: <br>
+        <!-- <input type="text" id="dockerCmd" style="width: 600px; height:100px;" readonly> -->
+
+        <textarea id="dockerCmd" name="dockerCmdName" rows="5" cols="75" disabled="true"></textarea>
+
+	<br><br>
+        <br><br>
+	
+
+        <h3>Use from outside your network - have to open ports on your router:</h3> <br>
+
+	SRT address for Moblin, Belabox etc: <br>
+        <input type="text" id="videoIngestAddress" style="width: 600px;" readonly>
+        <br><br>
+
+	SRT streamID for Moblin, Belabox etc: <br>
+        <input type="text" id="videoIngestID" style="width: 600px;" readonly>
+        <br><br>
+
+	video out for OBS, VLC etc: <br>
+        <input type="text" id="videoOut" style="width: 600px;" readonly>
+        <br><br>
+
+	Private Statistics-URL (will leak all live stream keys): <br>
+        <input type="text" id="privateStat" style="width: 600px;" readonly>
+        <br><br>
+
+	Public Statistics-URL for NOALBS: <br>
+        <input type="text" id="publicStat" style="width: 600px;" readonly>
+        <br><br>
+        
+
+
+        <br><br>
+        <h3>Use for testing on your local network - you do not have to open ports on your router:</h3><br>
+
+        SRT address for Moblin, Belabox etc - local network: <br>
+        <input type="text" id="localVideoIngestAddress" style="width: 600px;" readonly><br><br>
+
+        SRT streamID for Moblin, Belabox etc - local network: <br>
+        <input type="text" id="localVideoIngestID" style="width: 600px;" readonly><br><br>
+
+	video out for OBS, VLC etc - local network: <br>
+        <input type="text" id="localVideoOut" style="width: 600px;" readonly><br><br>
+
+	Private Statistics-URL (will leak all live stream keys) - local network: <br>
+        <input type="text" id="localPrivateStat" style="width: 600px;" readonly><br><br>
+
+	Public Statistics-URL for NOALBS - local network: <br>
+        <input type="text" id="localPublicStat" style="width: 600px;" readonly><br><br>
+
+
+
+
+    </div>
+
+        <script>
+		
+
+            function isPrivateIP(){
+                var ip = (document.getElementById("text1").value);
+                var ipDockerComputer = (document.getElementById("text7").value);
+                var configPath = (document.getElementById("text2").value);
+                var videoIngestPort = (document.getElementById("text3").value);
+                var videoOutPort = (document.getElementById("text5").value);
+                var privateStatPort = (document.getElementById("text4").value);
+                var publicStatort = (document.getElementById("text6").value);
+                var streamName = (document.getElementById("text8").value);
+                var StreamID = (document.getElementById("text9").value);
+
+		
+		document.getElementById("videoIngestAddress").value = "";
+		document.getElementById("videoIngestID").value = "";
+		document.getElementById("videoOut").value = "";
+		document.getElementById("privateStat").value = "";
+		document.getElementById("publicStat").value = "";
+                document.getElementById("localVideoIngestAddress").value = "";
+                document.getElementById("localVideoIngestID").value = "";
+                document.getElementById("localVideoOut").value = "";
+                document.getElementById("localPrivateStat").value = "";
+                document.getElementById("localPublicStat").value = "";
+
+
+
+
+		
+                var parts = ip.split('.');
+   		var isPub = parts[0] === '10' || (parts[0] === '172' && (parseInt(parts[1], 10) >= 16 && parseInt(parts[1], 10) <= 31)) || (parts[0] === '192' && parts[1] === '168');
+
+		if (isPub === true){
+                	document.getElementById("res").value = "Private - sorry look up CGNAT for more information";
+		}else{
+			document.getElementById("res").value = "Public - this should work from outside your network";  
+		}
+		
+		var dockerCmd = "docker run -d --restart=always --pull=always --name srtla-receiver -p " + videoIngestPort + ":5000/udp -p "+ privateStatPort + ":8181/tcp -p "+ videoOutPort + ":8282/udp -p "+ publicStatort + ":3000/tcp -v " + configPath + ":/app/config.json datagutt/belabox-receiver:latest"
+
+		document.getElementById("dockerCmd").value = dockerCmd;
+
+
+		document.getElementById("videoIngestAddress").value = "srtla://" + ip + ":" + videoIngestPort
+		document.getElementById("videoIngestID").value = "live/stream/" + streamName + "?srtauth=" + StreamID;
+		document.getElementById("videoOut").value = "srt://" + ip + ":" + videoOutPort + "/?streamid=play/stream/" + streamName + "?srtauth=" + StreamID;
+		document.getElementById("privateStat").value = "http://" + ip + ":" + privateStatPort + "/stats";
+		document.getElementById("publicStat").value = "http://" + ip + ":" + publicStatort + "/stats?streamer=" + streamName + "&key=" + StreamID;
+
+
+
+                document.getElementById("localVideoIngestAddress").value = "srtla://" + ipDockerComputer + ":" + videoIngestPort;
+                document.getElementById("localVideoIngestID").value = "live/stream/" + streamName + "?srtauth=" + StreamID;
+                document.getElementById("localVideoOut").value = "srt://" + ipDockerComputer + ":" + videoOutPort + "/?streamid=play/stream/" + streamName + "?srtauth=" + StreamID;
+                document.getElementById("localPrivateStat").value = "http://" + ipDockerComputer + ":" + privateStatPort + "/stats";
+                document.getElementById("localPublicStat").value = "http://" + ipDockerComputer + ":" + publicStatort + "/stats?streamer=" + streamName + "&key=" + StreamID;
+
+            }
+        </script>
+    </body>
+</html>
