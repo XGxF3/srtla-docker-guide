@@ -27,7 +27,7 @@
 Thanks to datagutt for making this container https://github.com/datagutt/bbox-receiver
 
 I made a webpage you open locally on your own browser to generate the docker command and stream urls to save you time. Plug in the values then press generate.
-srt docker generator.html</p>
+<br /> srt docker generator.html</p>
 
 
 
