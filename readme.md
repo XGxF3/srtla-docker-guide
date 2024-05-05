@@ -6,8 +6,8 @@ changelog
 fixed html generator to use the user name correctly and mismatched ports
 
 20240505
-added --restart=always to docker command 
-added --pull=always to docker command 
+added --restart=always to docker command
+added --pull=always to docker command
 change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”
 
 
