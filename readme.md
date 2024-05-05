@@ -2,13 +2,13 @@
 
 changelog
 
-20240421
-fixed html generator to use the user name correctly and mismatched ports
+<p>20240421</p>
+	<li>fixed html generator to use the user name correctly and mismatched ports<ul>
 
-20240505
-added --restart=always to docker command
-added --pull=always to docker command
-change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”
+<p>20240505</p>
+	<li>added --restart=always to docker command<ul>
+	<li>added --pull=always to docker command<ul>
+	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”<ul>
 
 
 
