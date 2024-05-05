@@ -4,13 +4,15 @@
 
 <p>20240421</p>
 	<li>fixed html generator to use the user name correctly and mismatched ports</li>
+
+<p></p>
  
 <p>20240505</p>
 	<li>added --restart=always to docker command</li>
 	<li>added --pull=always to docker command</li>
 	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”</li>
 	
-
+<p></p>
 
 
 
