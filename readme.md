@@ -22,8 +22,11 @@
 
 <h2>Description</h2>
 
-<p>I made a webpage you open locally on your own browser to generate the docker command and stream urls to save you time. Plug in the values then press generate.
+<p>This guide helps you setup datahutt's SRTLA docker container. Opening ports on your router, setting up NOALBS and Other programs is up to you.
 
+Thanks to datagutt for making this container https://github.com/datagutt/bbox-receiver
+
+I made a webpage you open locally on your own browser to generate the docker command and stream urls to save you time. Plug in the values then press generate.
 srt docker generator.html</p>
 
 
@@ -31,17 +34,7 @@ srt docker generator.html</p>
 <h2>Public IP address</h2>
 
 
-<p>For this to work from outside your network you need to have a public IP address. Then you have to open the ports on your router. If you are running the SRT_receiver docker, OBS and NOALBS in the same network then you just have to open the video ingest port.
-
-
-This guide gets  the SRT docker setup. Opening ports on your router, setting up NOALBS and Other programs is up to you.
-
-
-
-Thanks to datagutt for making this container https://github.com/datagutt/bbox-receiver</p>
-
-
-
+<p>For this to work from outside your network you need to have a public IP address. Then you have to open the ports on your router. If you are running the SRT_receiver docker, OBS and NOALBS in the same network then you just have to open the video ingest port.</p>p
 
 
 Find your public IP number using the webpage 
