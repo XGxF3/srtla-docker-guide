@@ -12,8 +12,9 @@
 	<li>added --pull=always to docker command</li>
 	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”</li>
 	
-<p></p><p></p>
-
+<p></p>
+<hr />
+<p></p>
 
 
 
