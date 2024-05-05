@@ -6,9 +6,9 @@
 	<li>fixed html generator to use the user name correctly and mismatched ports<ul>
 	</ul></li>
 <p>20240505</p>
-	<li>added --restart=always to docker command<ul>
-	<li>added --pull=always to docker command<ul>
-	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”<ul>
+	<li>added --restart=always to docker command<li>
+	<li>added --pull=always to docker command<li>
+	<li>change container name from belabox-receiver to srtla-receiver “or similar wording” added to “Looking at the log from view details…”<li>
 	</ul></li>
 
 
