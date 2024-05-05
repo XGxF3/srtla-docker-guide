@@ -3,8 +3,7 @@
 <p>changelog</p>
 
 <p>20240421</p>
-	<li>fixed html generator to use the user name correctly and mismatched ports<ul>
-	</li>
+	<li>fixed html generator to use the user name correctly and mismatched ports</li>
 <p>20240505</p>
 	<li>added --restart=always to docker command<li>
 	<li>added --pull=always to docker command<li>
