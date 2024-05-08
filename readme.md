@@ -12,7 +12,6 @@ I made a webpage you open locally on your own browser to generate the docker com
 <br /> srt docker generator.html</p>
 
 
-<p>Download both the files below and follow the pdf
+<p>Download the files from this repository and follow the instructions inthe pdf
 	
-	SRTLA with bitrate docker instructions and generator.pdf
-	SRTLA generator.html</p>
+
